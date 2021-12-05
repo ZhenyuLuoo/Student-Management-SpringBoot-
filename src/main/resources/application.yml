@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/hellospringboot?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  type-aliases-package: springbootmybatis.pojo
+  mapper-locations: classpath:/mybatis/*.xml
+
+logging:
+  file:
+    name: log/log.log
+  level:
+    root: info
+    springbootmybatis: debug

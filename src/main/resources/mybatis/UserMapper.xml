@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootmybatis.dao.UserDao">
+    <select id="listUser" resultType="com.example.springbootmybatis.pojo.User">
+        select  *
+        from hellospringboot.user;
+    </select>
+
+    <select id="listUserByName" parameterType="com.example.springbootmybatis.pojo.query.UserQuery" resultType="com.example.springbootmybatis.pojo.User">
+            select *
+            from hellospringboot.user
+            <where>
+                <if test = "name != null and name != ''">
+                    and `name` like concat('%', #{name}, '%')
+                </if>
+            </where>
+    </select>
+
+    <delete id="deleteUserById" parameterType="int">
+        delete from hellospringboot.user where id=#{id}
+    </delete>
+</mapper>
