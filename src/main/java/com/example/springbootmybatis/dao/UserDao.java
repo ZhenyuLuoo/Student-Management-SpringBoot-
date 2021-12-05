@@ -13,9 +13,16 @@ public interface UserDao {
     //search all users
     public List<User> listUser();
 
+    //search based on id
+    public User queryUserById(Integer id);
+
     //search based on username and show by differ pages
     public List<User> listUserByName(UserQuery userQuery);
 
     //Delete by id
     public int deleteUserById(Integer id);
+
+    //update user
+    public boolean updateUser(User user);
+
 }

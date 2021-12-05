@@ -21,4 +21,17 @@
     <delete id="deleteUserById" parameterType="int">
         delete from hellospringboot.user where id=#{id}
     </delete>
+
+    <select id="queryUserById" parameterType="int" resultType="com.example.springbootmybatis.pojo.User">
+        select *
+        from hellospringboot.user
+        where id = #{id}
+
+    </select>
+
+    <update id="updateUser" parameterType="com.example.springbootmybatis.pojo.User">
+        update hellospringboot.user
+        set name = #{name}, pwd = #{pwd}
+        where id = #{id}
+    </update>
 </mapper>

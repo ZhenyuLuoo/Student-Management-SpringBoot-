@@ -15,4 +15,10 @@ public interface UserService {
 
     //Delete by id
     public boolean deleteUserById(Integer id);
+
+    //search based on id
+    public User queryUserById(Integer id);
+
+    //update user
+    public boolean updateUser(User user);
 }

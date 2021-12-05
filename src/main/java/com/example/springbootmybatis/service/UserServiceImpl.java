@@ -35,4 +35,15 @@ public class UserServiceImpl implements UserService{
             return false;
         }
     }
+
+    @Override
+    public User queryUserById(Integer id) {
+        return userDao.queryUserById(id);
+    }
+
+    @Override
+    public boolean updateUser(User user) {
+        boolean i = userDao.updateUser(user);
+        return i;
+    }
 }
