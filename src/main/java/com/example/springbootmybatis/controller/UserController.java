@@ -42,4 +42,30 @@ public class UserController {
             return "redirect:/";
         }
     }
+
+    @GetMapping("/edit/{id}")
+    public String toEdit(@PathVariable Integer id, Model model){
+        model.addAttribute("user", userService.queryUserById(id));
+        return "editUser";
+    }
+
+    @PostMapping("/edit")
+    public String edit(User user, RedirectAttributes attributes, UserQuery userQuery){
+        userQuery.setName(user.getName());
+        PageInfo<User> userPageInfo = userService.listUserByName(userQuery);
+        if (userPageInfo.getSize() == 0){
+            boolean success = userService.updateUser(user);
+            if (success){
+                attributes.addFlashAttribute("message", "Update Success!");
+                return "redirect:/";
+            }else {
+                attributes.addFlashAttribute("message", "Failed to update the item!");
+                return "redirect:/";
+            }
+        }else {
+            attributes.addFlashAttribute("message", "Duplicate username!");
+            return "redirect:/edit/" + user.getId();
+        }
+    }
+
 }
